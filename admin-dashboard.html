@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+<div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Admin Dashboard</h1>
+    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">
+      Logout
+    </button>
+  </div>
+
+  <div class="mb-4 bg-gray-100 p-3 rounded">
+    <h3 class="font-semibold">User Info</h3>
+    <p id="userInfo"></p>
+  </div>
+
+  <h3 class="font-semibold mb-2">All Customer Tasks</h3>
+  <ul id="allTasks" class="space-y-2"></ul>
+</div>
+
+<script src="protect.js"></script>
+<script src="auth/auth.js"></script>
+
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+document.getElementById("userInfo").innerText =
+  user ? `${user.name} (${user.role})` : "No user";
+
+const tasks = JSON.parse(localStorage.getItem("customerTasks")) || [];
+const list = document.getElementById("allTasks");
+
+tasks.forEach(t => {
+  list.innerHTML += `
+    <li class="bg-gray-100 p-2 rounded">${t}</li>
+  `;
+});
+</script>
+
+</body>
+</html>

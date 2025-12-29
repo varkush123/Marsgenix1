@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Select Role</title>
+
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  
+  <script src="auth.js" defer></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center">
+
+  <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-3xl">
+    
+    <h2 class="text-2xl font-bold text-center mb-8">
+      Select Your Role
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      
+      <div 
+        onclick="selectRole('customer')"
+        class="cursor-pointer border rounded-lg p-6 text-center hover:bg-blue-50 hover:border-blue-500 transition"
+      >
+        <h3 class="text-lg font-semibold mb-2">Customer</h3>
+        <p class="text-sm text-gray-500">
+          Book services easily
+        </p>
+      </div>
+      
+      <div 
+        onclick="selectRole('helper')"
+        class="cursor-pointer border rounded-lg p-6 text-center hover:bg-green-50 hover:border-green-500 transition"
+      >
+        <h3 class="text-lg font-semibold mb-2">Helper</h3>
+        <p class="text-sm text-gray-500">
+          Accept and manage tasks
+        </p>
+      </div>
+
+      <div 
+        onclick="selectRole('admin')"
+        class="cursor-pointer border rounded-lg p-6 text-center hover:bg-purple-50 hover:border-purple-500 transition"
+      >
+        <h3 class="text-lg font-semibold mb-2">Admin</h3>
+        <p class="text-sm text-gray-500">
+          Manage whole system
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>

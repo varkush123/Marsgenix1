@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Helper Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+
+<div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow">
+  <div class="flex justify-between items-center mb-4">
+    <h1 class="text-2xl font-bold">Helper Dashboard</h1>
+    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded">
+      Logout
+    </button>
+  </div>
+
+  <div class="mb-4">
+    <span class="font-semibold">Status:</span>
+    <span id="status" class="text-red-500 font-bold">Offline</span>
+    <button onclick="toggleStatus()" class="ml-3 bg-green-500 text-white px-3 py-1 rounded">
+      Toggle
+    </button>
+  </div>
+
+  <h3 class="font-semibold mb-2">Available Tasks</h3>
+  <ul id="availableTasks" class="space-y-2"></ul>
+</div>
+
+<script src="protect.js"></script>
+<script src="auth/auth.js"></script>
+
+<script>
+const tasks = JSON.parse(localStorage.getItem("customerTasks")) || [];
+const list = document.getElementById("availableTasks");
+
+tasks.forEach(t => {
+  list.innerHTML += `
+    <li class="flex justify-between bg-gray-100 p-2 rounded">
+      <span>${t}</span>
+      <button onclick="acceptTask()" class="bg-blue-600 text-white px-2 rounded">
+        Accept
+      </button>
+    </li>
+  `;
+});
+
+function acceptTask(){
+  alert("Task accepted (Demo)");
+}
+
+function toggleStatus(){
+  const status = document.getElementById("status");
+  status.innerText = status.innerText === "Offline" ? "Online" : "Offline";
+  status.classList.toggle("text-green-500");
+  status.classList.toggle("text-red-500");
+}
+</script>
+
+</body>
+</html>
